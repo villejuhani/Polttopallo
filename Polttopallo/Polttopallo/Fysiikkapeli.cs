@@ -10,6 +10,7 @@ using System.Collections.Generic;
 /// </summary>
 public class Polttopallo : PhysicsGame
 {
+    // TODO: taulukko, ks: https://tim.jyu.fi/view/kurssit/tie/ohj1/2020k/demot/demo11#teht%C3%A4v%C3%A4-4
     private PelattavaHahmo pelaaja;
     private PelattavaHahmo pelaaja2;
     private Widget sydamet;
