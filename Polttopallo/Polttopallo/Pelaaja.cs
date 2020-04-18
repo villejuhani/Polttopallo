@@ -10,7 +10,7 @@ class PelattavaHahmo : PhysicsObject
     private IntMeter elamaLaskuri = new IntMeter(3, 0, 3);
     public IntMeter ElamaLaskuri { get { return elamaLaskuri; } }
     public PelattavaHahmo(double leveys, double korkeus, Shape shape)
-        : base(leveys, korkeus)
+        : base(leveys, korkeus, shape)
     {
         elamaLaskuri.LowerLimit += delegate { this.Destroy(); };
     }

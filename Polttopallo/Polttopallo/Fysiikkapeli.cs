@@ -10,7 +10,7 @@ using System.Collections.Generic;
 /// </summary>
 public class Polttopallo : PhysicsGame
 {
-    // TODO: taulukko, ks: https://tim.jyu.fi/view/kurssit/tie/ohj1/2020k/demot/demo11#teht%C3%A4v%C3%A4-4
+    // TODO: taulukko/lista, ks: https://tim.jyu.fi/answers/kurssit/tie/ohj1/2020k/demot/demo11?answerNumber=7&task=bussipysakit&user=hytovjxz
     private PelattavaHahmo pelaaja;
     private PelattavaHahmo pelaaja2;
     private Widget sydamet;
@@ -432,6 +432,7 @@ public class Polttopallo : PhysicsGame
         uudelleenaloitus.TextColor = Color.White;
         Add(uudelleenaloitus);
     }
+
 
     /// <summary>
     /// Luodaan toiminnot, jotka tapahtuvat kun 'r' -näppäintä painetaan
