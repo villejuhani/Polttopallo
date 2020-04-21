@@ -1,6 +1,7 @@
 ﻿using Jypeli;
 using Jypeli.Assets;
 using Jypeli.Widgets;
+using System;
 using System.Collections.Generic;
 
 /// @author Ville Hytönen
@@ -214,7 +215,7 @@ public class Polttopallo : PhysicsGame
         vihunNopeutusAjastin.Interval = 5;
         vihunNopeutusAjastin.Timeout += delegate
         {
-            vihunNopeus += 15;
+            vihunNopeus += 20;
         };
         vihunNopeutusAjastin.Start();
     }
@@ -232,7 +233,7 @@ public class Polttopallo : PhysicsGame
         olioidenSynnyttamisenNopeutin.Interval = 10;
         olioidenSynnyttamisenNopeutin.Timeout += delegate
         {
-            vihunLuonti.Interval -= 0.02;
+            vihunLuonti.Interval -= 0.035;
         };
         olioidenSynnyttamisenNopeutin.Start();
     }
@@ -260,6 +261,7 @@ public class Polttopallo : PhysicsGame
         polkuAivot.Path = polku;
         polkuAivot.Speed = vihunNopeus;
         polkuAivot.ArrivedAtEnd += keihas.Destroy;
+        keihas.LifetimeLeft = TimeSpan.FromSeconds(7.0);
         keihas.Brain = polkuAivot;
 
         keihas.Angle = lopullinen.Angle - Angle.RightAngle;
@@ -276,25 +278,15 @@ public class Polttopallo : PhysicsGame
         PhysicsObject kerattava = new PhysicsObject(25, 25, Shape.Heart);
         kerattava.Color = Color.Magenta;
         Vector nolla = new Vector(0, 0);
-        Vector minMatkaPelaajasta = new Vector(80, 80);
+        Vector minMatkaPelaajasta = new Vector(0, 150);
 
-        if (kaksinPeli)
+        bool kauaksiPelaajista = false;
+        do
         {
-            do
-            {
-                kerattava.Position = new Vector(RandomGen.NextInt(HAKKI_NEGATIIVINEN + 5, HAKKI_POSITIIVINEN - 5), RandomGen.NextInt(HAKKI_NEGATIIVINEN + 5, HAKKI_POSITIIVINEN - 5));
+            kerattava.Position = new Vector(RandomGen.NextInt(HAKKI_NEGATIIVINEN + 5, HAKKI_POSITIIVINEN - 5), RandomGen.NextInt(HAKKI_NEGATIIVINEN + 5, HAKKI_POSITIIVINEN - 5));
+            if (kaksinPeli) kauaksiPelaajista = Vector.Distance(kerattava.Position, pelaaja2.Position) < Vector.Distance(nolla, minMatkaPelaajasta);
 
-            } while (Vector.Distance(kerattava.Position, pelaaja.Position) < Vector.Distance(nolla, minMatkaPelaajasta) || Vector.Distance(kerattava.Position, pelaaja2.Position) < Vector.Distance(nolla, minMatkaPelaajasta));
-        }
-        
-        else
-        {
-            do
-            {
-                kerattava.Position = new Vector(RandomGen.NextInt(HAKKI_NEGATIIVINEN + 5, HAKKI_POSITIIVINEN - 5), RandomGen.NextInt(HAKKI_NEGATIIVINEN + 5, HAKKI_POSITIIVINEN - 5));
-
-            } while (Vector.Distance(kerattava.Position, pelaaja.Position) < Vector.Distance(nolla, minMatkaPelaajasta));
-        }
+        } while (Vector.Distance(kerattava.Position, pelaaja.Position) < Vector.Distance(nolla, minMatkaPelaajasta) || kauaksiPelaajista);
 
         kerattava.Tag = "kerattava";
         kerattava.CollisionIgnoreGroup = 1;
