@@ -1,11 +1,10 @@
-# Pohja Ohjelmointi 1 -kurssin harjoitustöiden GIT-repoille.
+# Polttopallo
 
-Tämä on pohja Ohjelmointi 1 -kurssin harjoitustöiden Git-repoille. 
-Opiskelija forkkaa tämän repon omaa harjoitustyötään varten. 
-`fork`-toiminto löytyy sivun yläreunasta.
+Polttopallo (in english dodgeball) is a game where you try to dodge "balls" as long as you can. 
 
-Muokkaa gitlab.jyu.fi-palvelussa oman projektisi asetuksia, kuten projektin nimeä
-ja projektin kuvausta kohdasta Settings. 
+The game has a single player and a two player mode. 
 
-Lue Git-versiohallinnan tarkemmat käyttöohjeet TIMistä: <https://tim.jyu.fi/view/kurssit/tie/ohj1/harjoitustyo/git>
+![polttopallo_screencapture](https://github.com/villejuhani/Polttopallo/assets/77850549/13538eb0-03fd-4f0a-9b0d-7bfe44d6b8d4)
 
+
+Made with C# and using the University of Jyväskylä's Jypeli library.
